@@ -13,7 +13,8 @@ class Question(models.Model):
 
     # omg I'm writing functions, this feels like python!!!
     def was_published_recently(self):
-        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+        now = timezone.now()
+        return now - datetime.timedelta(days=1) <= self.pub_date <= now
 
 
 class Choice(models.Model):
